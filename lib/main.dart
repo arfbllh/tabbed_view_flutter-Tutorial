@@ -6,8 +6,6 @@ void main() {
 
 class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);
-
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -15,12 +13,42 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: Scaffold(
-        appBar: AppBar(
-          title: const Text("My Appbar"),
-        ),
-        body: const Center(
-          child: Text("body center"),
+      home: DefaultTabController(
+        length: 3,
+        child: Scaffold(
+          appBar: AppBar(
+            title: const Text('app bar'),
+            centerTitle: true,
+            bottom: const TabBar(
+              tabs: [
+                Tab(
+                  text: 'Tab 1',
+                  icon: Icon(Icons.people),
+                ),
+                Tab(
+                  text: 'Tab 2',
+                  icon: Icon(Icons.contacts),
+                ),
+                Tab(
+                  text: 'Tab 3',
+                  icon: Icon(Icons.dialer_sip),
+                )
+              ],
+            ),
+          ),
+          body: const TabBarView(
+            children: [
+              Center(
+                child: Text('Page 1'),
+              ),
+              Center(
+                child: Text('Page 2'),
+              ),
+              Center(
+                child: Text('Page 3'),
+              ),
+            ],
+          ),
         ),
       ),
     );
