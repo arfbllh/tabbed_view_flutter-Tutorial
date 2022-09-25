@@ -4,8 +4,29 @@ void main() {
   runApp(const MyApp());
 }
 
-class MyApp extends StatelessWidget {
+class MyApp extends StatefulWidget {
   const MyApp({Key? key}) : super(key: key);
+
+  @override
+  State<MyApp> createState() => _MyAppState();
+}
+
+class _MyAppState extends State<MyApp> with SingleTickerProviderStateMixin {
+  
+  late TabController controller;
+
+  @override
+  void initState() {
+    super.initState();
+    controller = TabController(length: 3, vsync: this);
+  }
+
+  @override
+  void dispose() {
+    controller.dispose();
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -13,42 +34,41 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: DefaultTabController(
-        length: 3,
-        child: Scaffold(
-          appBar: AppBar(
-            title: const Text('app bar'),
-            centerTitle: true,
-            bottom: const TabBar(
-              tabs: [
-                Tab(
-                  text: 'Tab 1',
-                  icon: Icon(Icons.people),
-                ),
-                Tab(
-                  text: 'Tab 2',
-                  icon: Icon(Icons.contacts),
-                ),
-                Tab(
-                  text: 'Tab 3',
-                  icon: Icon(Icons.dialer_sip),
-                )
-              ],
-            ),
-          ),
-          body: const TabBarView(
-            children: [
-              Center(
-                child: Text('Page 1'),
+      home: Scaffold(
+        appBar: AppBar(
+          title: const Text('app bar'),
+          centerTitle: true,
+          bottom: TabBar(
+            controller: controller,
+            tabs: const [
+              Tab(
+                text: 'Tab 1',
+                icon: Icon(Icons.people),
               ),
-              Center(
-                child: Text('Page 2'),
+              Tab(
+                text: 'Tab 2',
+                icon: Icon(Icons.contacts),
               ),
-              Center(
-                child: Text('Page 3'),
-              ),
+              Tab(
+                text: 'Tab 3',
+                icon: Icon(Icons.dialer_sip),
+              )
             ],
           ),
+        ),
+        body: TabBarView(
+          controller: controller,
+          children: const [
+            Center(
+              child: Text('Page 1'),
+            ),
+            Center(
+              child: Text('Page 2'),
+            ),
+            Center(
+              child: Text('Page 3'),
+            ),
+          ],
         ),
       ),
     );
