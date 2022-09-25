@@ -12,13 +12,15 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> with SingleTickerProviderStateMixin {
-  
   late TabController controller;
 
   @override
   void initState() {
     super.initState();
     controller = TabController(length: 3, vsync: this);
+    controller.addListener(() {
+      setState(() {});
+    });
   }
 
   @override
@@ -36,7 +38,7 @@ class _MyAppState extends State<MyApp> with SingleTickerProviderStateMixin {
       ),
       home: Scaffold(
         appBar: AppBar(
-          title: const Text('app bar'),
+          title: const Text('App Bar'),
           centerTitle: true,
           bottom: TabBar(
             controller: controller,
@@ -69,6 +71,27 @@ class _MyAppState extends State<MyApp> with SingleTickerProviderStateMixin {
               child: Text('Page 3'),
             ),
           ],
+        ),
+        floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
+        floatingActionButton: Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: <Widget>[
+              FloatingActionButton(
+                onPressed: () {
+                  controller.animateTo(controller.index - 1);
+                },
+                child: const Icon(Icons.navigate_before),
+              ),
+              FloatingActionButton(
+                onPressed: () {
+                  controller.animateTo(controller.index + 1);
+                },
+                child: const Icon(Icons.navigate_next),
+              )
+            ],
+          ),
         ),
       ),
     );
