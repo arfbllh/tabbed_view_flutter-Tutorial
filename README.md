@@ -1,6 +1,6 @@
 # <span style = "color:green" > **Tab View**
 
-A tab view presents multiple mutually exclusive panes of content in the same area.which people can switch between using tabbed control.There are lots of apps where we come across tabs.Tabs are commonly found in apps as they make it easier for users to navigate.A tab view presents multiple exclusive.
+A tab view presents multiple mutually exclusive panes of content in the same area.which people can switch between using tabbed control.There are lots of apps where we come across tabs.Tabs are commonly found in apps as they make it easier for users to navigate.
 
 
 ![App Bar](/assets/image1.jpg)
@@ -109,7 +109,7 @@ We can add whatever content we desire for each of the tabs using the TabbarView 
       ],
   ),
 ```
-![Figure 1](assets/image2.jpg)
+![Figure 1](assets/image1.jpg)
 
 ## <span style="color:green">  Step 4: Convert to stateful widget
 
@@ -190,7 +190,8 @@ TabbarView(
  ),
  ```
 
- ## <span style="color:green"> Step 7: Navigation Button
+
+## <span style="color:green"> Step 7: Navigation Button
 
 We will now add some navigation buttons to the app to 
 switch between the apps and use the controller we just
@@ -274,6 +275,12 @@ class _MyAppState extends State<MyApp> with SingleTickerProviderStateMixin {
    */
 }
 ```
+# <span style = "color:green">Resources
+1. [Flutter Documentation](https://docs.flutter.dev/cookbook/design/tabs)
+
+2. [Youtube Video](https://www.youtube.com/watch?v=POtoEH-5l40)
+
+
 
 # <span style = "color:red">Errors and Cautions
 1. Make sure to use a stateful widget if you plan to add any animations or dynamic pages
