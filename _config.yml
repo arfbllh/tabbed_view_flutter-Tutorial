@@ -1,3 +1,7 @@
-remote_theme: pages-themes/hacker@v0.2.0
+remote_theme: dracula/gh-pages
 plugins:
 - jekyll-remote-theme
+
+title: [Tabbed View Tutorial]
+description: [A short tutorial for tabbed view with flutter and code snippets]
+icon: [assets/icon.png]
